@@ -1,0 +1,123 @@
+{% extends 'base.html'%}
+{%block head%}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Titanic Prediction</title>
+
+{%endblock%}
+
+{%block body%}
+
+<div class="page-wrapper bg-titanic p-t-25 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w1400">
+        <div class="row row-space">
+            <div class="col-2">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <h2 class="title">Titanic survival prediction</h2>
+                            <form method="POST">
+                                <div class="input-group">
+                                    <label for="full_name" class="label">full name</label>
+                                    <input class="input--style-4" type="text" name="full_name" id="fullName">
+                                </div>
+                                
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">age</label>
+                                            <input class="input--style-4" type="number" name="age" min="1" id="age">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">Gender</label>
+                                            <div class="p-t-10">
+                                                <label class="radio-container m-r-45">Male
+                                                    <input type="radio" checked="checked" name="gender" id="male">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="radio-container">Female
+                                                    <input type="radio" name="gender" id="female">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">No of Parent/Child</label>
+                                            <input class="input--style-4" type="number" min="0" name="sibsp" id="sibsp">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">No of Siblings</label>
+                                            <input class="input--style-4" type="number" min ="0"name="parch" id="parch">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label for="t_class" class="label">Booking Class</label>
+                                    <input type="range" min="1" max="3" value="1" class="slider" id="t_class" name="t_class">
+                                    <span id="spn_BookingClass">First Class</span>
+                                </div>
+
+                                <div class="p-t-15">
+                                    <button class="btn btn--radius-2 btn--blue" type="button" onclick="predictData()">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="resultContainer" class="col-2" style="display: none;">
+                <div class="card card-4">
+                    <div class="card-body">
+                        <h2 class="title">Result</h2>
+                        <h3 id="txtResult"></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <form method="POST",action="/predict"> -->
+<!-- <form>
+    <div class="mb-3">
+        <label for="name1" class="form-label">Enter your name</label>
+        <input type="text" class="form-control" id="name1" placeholder="John">
+    </div>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name='gender'>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+    </select><br>
+    <label for="age">Enter your age:</label>
+    <input type="number" id="age" name="age"><br>
+    <label for="t_class">What kind of class you wish to go</label>
+    <select id="t_class" name='t_class'>
+        <option>select</option>
+        <option value="1">First</option>
+        <option value="2">Second</option>
+        <option value="3">Third</option>
+    </select><br>
+    <div class="slidecontainer">
+        <p>Enter your no.of sibilings:</p>
+        <input type="range" min="1" max="10" value="0" class="slider" id="sliderSibiling">
+    </div>
+    <label for="sibsp">Enter your no.of sibilings:</label>
+    <input type="number" id="sibsp" name="sibsp"><br>
+    <label for="parch">Enter your no.of parents/child:</label>
+    <input type="number" id="parch" name="parch"><br>
+    <button type="button" onclick="predictData()">Predict</button>
+</form> -->
+
+<br>
+<!-- {{prediction_text}} -->
+
+{%endblock%}
